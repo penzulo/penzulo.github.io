@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Bhargav Deshpande — CS student at MIT-WPU, Pune. I build backend-heavy full-stack systems.">
+		<title>Bhargav Deshpande</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+
+		<header>
+			<h1>Bhargav Deshpande</h1>
+			<p class="tagline">I build backend-heavy full-stack systems.</p>
+			<nav aria-label="Social links">
+				<a href="https://github.com/penzulo" rel="noopener noreferrer">GitHub</a>
+				<a href="https://www.linkedin.com/in/bhargav-deshpande/" rel="noopener noreferrer">LinkedIn</a>
+				<a href="mailto:bhardesh2005@gmail.com">Email</a>
+			</nav>
+		</header>
+
+		<main>
+
+			<section aria-labelledby="about-heading">
+				<h2 id="about-heading">About</h2>
+				<p>
+					CS student at <a href="https://mitwpu.edu.in/" rel="noopener noreferrer">MIT World Peace University</a>, Pune.
+					I care about systems that are correct, observable, and fast — in that order.
+					I spend most of my time on backend architecture, API design, and the plumbing
+					that makes full-stack applications not fall apart under load.
+				</p>
+				<p>
+					Outside of code I run Arch Linux on a Sway/Wayland setup and think
+					too much about why software gets slow.
+				</p>
+			</section>
+
+			<section aria-labelledby="work-heading">
+				<h2 id="work-heading">Work</h2>
+
+				<article class="entry">
+					<div class="entry-meta">
+						<span class="entry-year">2024 &ndash; present</span>
+						<span class="entry-tag">Co-founder</span>
+					</div>
+					<h3><a href="https://vendorgrid.in" rel="noopener noreferrer">VendorGrid</a></h3>
+					<p>
+						Procurement platform digitising vendor management for small businesses.
+						Live at <a href="https://vendorgrid.in" rel="noopener noreferrer">vendorgrid.in</a>
+						with a public API at <a href="https://api.vendorgrid.in" rel="noopener noreferrer">api.vendorgrid.in</a>.
+						Built on FastAPI + PostgreSQL with SSE-based real-time vendor notifications,
+						HTTP-only cookie auth, structured JSON logging, and a Docker Compose deployment
+						behind Caddy on a single DigitalOcean VPS.
+					</p>
+				</article>
+			</section>
+
+			<section aria-labelledby="projects-heading">
+				<h2 id="projects-heading">Projects</h2>
+
+				<article class="entry">
+					<div class="entry-meta">
+						<span class="entry-year">2025</span>
+						<span class="entry-tag">Observability</span>
+					</div>
+					<h3>Watchtower</h3>
+					<p>
+						Real-time observability dashboard built on a hot/cold path architecture.
+						Hot path: Redis Pub/Sub fans out events to SSE subscribers via Elysia (Bun).
+						Cold path: BullMQ workers drain into ClickHouse for long-term retention and
+						analytical queries. Frontend in TanStack Start (React) with TanStack Query,
+						Eden Treaty for end-to-end type inference across the monorepo.
+					</p>
+				</article>
+
+				<article class="entry">
+					<div class="entry-meta">
+						<span class="entry-year">2024</span>
+						<span class="entry-tag">Finance</span>
+					</div>
+					<h3><a href="https://github.com/penzulo/MarketMiner" rel="noopener noreferrer">MarketMiner</a></h3>
+					<p>
+						Python library for financial forecasting and portfolio optimisation using
+						NSE end-of-day index data. Combines statistical analysis and machine learning
+						with a Progressive Web App dashboard. Rebuilt from a family member's original
+						pipeline with strict architectural patterns: one-way dependency flow,
+						<code>StrEnum</code>
+						throughout, injectable transports for testing.
+					</p>
+				</article>
+
+				<article class="entry">
+					<div class="entry-meta">
+						<span class="entry-year">2024</span>
+						<span class="entry-tag">Algorithms</span>
+					</div>
+					<h3><a href="https://github.com/penzulo/dsa" rel="noopener noreferrer">DSA in Rust</a></h3>
+					<p>
+						Sorting and search algorithm implementations in idiomatic, safe, generic Rust —
+						structured as a library with <code>main.rs</code>
+						as a demo client.
+						Each algorithm comes with a dedicated Markdown note covering
+						logic, complexity, and implementation decisions. A running learning artefact,
+						not a throwaway exercise repo.
+					</p>
+				</article>
+			</section>
+
+			<section aria-labelledby="stack-heading">
+				<h2 id="stack-heading">Stack</h2>
+				<p>
+					<strong>Languages:</strong>
+					Python, TypeScript, Rust, C/C++
+				</p>
+				<p>
+					<strong>Backend:</strong>
+					FastAPI, Elysia (Bun), PostgreSQL, Redis, ClickHouse, BullMQ
+				</p>
+				<p>
+					<strong>Frontend:</strong>
+					React, TanStack Start, TanStack Query
+				</p>
+				<p>
+					<strong>Infra:</strong>
+					Docker, Caddy, Nginx, DigitalOcean, Arch Linux / Sway
+				</p>
+				<p>
+					<strong>Currently learning:</strong>
+					deeper systems programming in C++, ClickHouse internals
+				</p>
+			</section>
+
+			<section aria-labelledby="writing-heading">
+				<h2 id="writing-heading">Writing</h2>
+				<p>
+					Blog coming soon. I take notes while I build — on architecture decisions,
+					things that surprised me, and things I had to understand properly before I could move on.
+					They'll live here.
+				</p>
+			</section>
+		</main>
+
+		<footer>
+			<p>
+				Bhargav Deshpande &middot; Pune, India &middot;
+				<a href="https://github.com/penzulo" rel="noopener noreferrer">GitHub</a>&middot;
+				<a href="https://www.linkedin.com/in/bhargav-deshpande/" rel="noopener noreferrer">LinkedIn</a>
+			</p>
+			<p class="footer-note">Pure HTML and CSS. No frameworks, no scripts.</p>
+		</footer>
+	</body>
+</html>
