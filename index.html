@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="Bhargav Deshpande — CS student at MIT-WPU, Pune. I build backend-heavy full-stack systems.">
+		<meta name="description" content="Bhargav Deshpande — B.Sc. Data Science student at MIT-WPU, Pune. I build backend-heavy full-stack systems.">
 		<title>Bhargav Deshpande</title>
 		<link rel="stylesheet" href="style.css">
 	</head>
@@ -24,15 +24,29 @@
 			<section aria-labelledby="about-heading">
 				<h2 id="about-heading">About</h2>
 				<p>
-					CS student at <a href="https://mitwpu.edu.in/" rel="noopener noreferrer">MIT World Peace University</a>, Pune.
-					I care about systems that are correct, observable, and fast — in that order.
+					B.Sc. Data Science student at <a href="https://mitwpu.edu.in/" rel="noopener noreferrer">MIT World Peace University</a>, Pune.
+					I care about systems that are correct, observable, and fast.
 					I spend most of my time on backend architecture, API design, and the plumbing
 					that makes full-stack applications not fall apart under load.
 				</p>
 				<p>
-					Outside of code I run Arch Linux on a Sway/Wayland setup and think
-					too much about why software gets slow.
+					Outside of code I roam around on my motorcycle chasing sunsets and fast winds.
+					I also like ricing my Arch Linux environment.
+					These are my <a href="" rel="noopener noreferrer">dotfiles</a>.
 				</p>
+			</section>
+
+			<section aria-labelledby="education-heading">
+				<h2 id="education-heading">Education</h2>
+
+				<article class="entry">
+					<div class="entry-meta">
+						<span class="entry-year">2023 &ndash; present</span>
+						<span class="entry-tag">Undergraduate</span>
+					</div>
+					<h3><a href="https://mitwpu.edu.in/" rel="noopener noreferrer">MIT World Peace University</a>, Pune</h3>
+					<p>Bachelor of Science in Data Science.</p>
+				</article>
 			</section>
 
 			<section aria-labelledby="work-heading">
@@ -46,11 +60,15 @@
 					<h3><a href="https://vendorgrid.in" rel="noopener noreferrer">VendorGrid</a></h3>
 					<p>
 						Procurement platform digitising vendor management for small businesses.
-						Live at <a href="https://vendorgrid.in" rel="noopener noreferrer">vendorgrid.in</a>
-						with a public API at <a href="https://api.vendorgrid.in" rel="noopener noreferrer">api.vendorgrid.in</a>.
+						Live at <a href="https://vendorgrid.in" rel="noopener noreferrer">vendorgrid.in</a>.
 						Built on FastAPI + PostgreSQL with SSE-based real-time vendor notifications,
 						HTTP-only cookie auth, structured JSON logging, and a Docker Compose deployment
 						behind Caddy on a single DigitalOcean VPS.
+					</p>
+					<p class="footer-note">
+						<strong>P.S</strong>: The JSON stdout logs are passed through
+						<a href="https://jqlang.org/" rel="noopener noreferrer">jq</a>.
+						It's actually a very good way to differ JSON logs in stdout
 					</p>
 				</article>
 			</section>
@@ -96,7 +114,7 @@
 					</div>
 					<h3><a href="https://github.com/penzulo/dsa" rel="noopener noreferrer">DSA in Rust</a></h3>
 					<p>
-						Sorting and search algorithm implementations in idiomatic, safe, generic Rust —
+						Sorting and search algorithm implementations in idiomatic, safe, generic Rust &mdash;
 						structured as a library with <code>main.rs</code>
 						as a demo client.
 						Each algorithm comes with a dedicated Markdown note covering
@@ -133,7 +151,7 @@
 			<section aria-labelledby="writing-heading">
 				<h2 id="writing-heading">Writing</h2>
 				<p>
-					Blog coming soon. I take notes while I build — on architecture decisions,
+					Blog coming soon. I take notes while I build &mdash; on architecture decisions,
 					things that surprised me, and things I had to understand properly before I could move on.
 					They'll live here.
 				</p>
@@ -146,7 +164,14 @@
 				<a href="https://github.com/penzulo" rel="noopener noreferrer">GitHub</a>&middot;
 				<a href="https://www.linkedin.com/in/bhargav-deshpande/" rel="noopener noreferrer">LinkedIn</a>
 			</p>
-			<p class="footer-note">Pure HTML and CSS. No frameworks, no scripts.</p>
+			<p class="footer-note">
+				Two files. No frameworks. <a href="https://motherfuckingwebsite.com" rel="noopener noreferrer">You know the vibe.</a>
+				Inspired by <a href="https://karpathy.ai" rel="noopener noreferrer">karpathy.ai</a>.
+			</p>
+			<p class="footer-note">
+				Plain semantic HTML &mdash; friendly to browsers, screen readers, web crawlers, and LLMs alike.
+				Feel free to scrape.
+			</p>
 		</footer>
 	</body>
 </html>
