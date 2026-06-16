@@ -1,0 +1,215 @@
+%-------------------------
+% Harvard-Style Resume — Bhargav Deshpande
+% Two-page, XYZ formula, FAANG keyword-optimised
+%-------------------------
+\documentclass[11pt, letterpaper]{article}
+
+\usepackage[
+  top=0.55in,
+  bottom=0.55in,
+  left=0.65in,
+  right=0.65in
+]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fontenc}
+\usepackage{inputenc}
+\usepackage{microtype}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{xcolor}
+
+% ---- Colours ----
+\definecolor{harvardcrimson}{RGB}{165,28,48}
+\definecolor{darkgray}{RGB}{60,60,60}
+\definecolor{medgray}{RGB}{100,100,100}
+
+% ---- Hyperlinks ----
+\hypersetup{
+  colorlinks=true,
+  urlcolor=harvardcrimson,
+  linkcolor=harvardcrimson
+}
+
+% ---- Section heading style ----
+\titleformat{\section}
+  {\large\bfseries\color{darkgray}}
+  {}
+  {0em}
+  {}
+  [\color{harvardcrimson}\titlerule]
+
+\titlespacing*{\section}{0pt}{8pt}{5pt}
+
+% ---- List settings ----
+\setlist[itemize]{
+  leftmargin=*,
+  itemsep=1.5pt,
+  topsep=2pt,
+  parsep=0pt,
+  label=\textbullet
+}
+
+% ---- Custom commands ----
+\newcommand{\resumeheader}[4]{%
+  \begin{center}
+    {\LARGE\bfseries #1}\\[4pt]
+    {\small #2 \textbar{} #3 \textbar{} #4}
+  \end{center}
+}
+
+\newcommand{\roleentry}[4]{%
+  \noindent
+  \begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbf{#1} \textbar{} \textit{#2} & \textit{\small #3} \\
+    \multicolumn{2}{@{}l@{}}{\small\textit{#4}}
+  \end{tabularx}%
+}
+
+\newcommand{\rolelite}[3]{%
+  \noindent
+  \begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbf{#1} & \textit{\small #2} \\
+    \multicolumn{2}{@{}l@{}}{\small\textit{#3}}
+  \end{tabularx}%
+}
+
+\newcommand{\projectentry}[3]{%
+  \noindent
+  \begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbf{#1} \textbar{} \href{#2}{\small\texttt{#2}} & \textit{\small #3}
+  \end{tabularx}%
+}
+
+\newcommand{\projectnurl}[2]{%
+  \noindent
+  \begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbf{#1} & \textit{\small #2}
+  \end{tabularx}%
+}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+%============================================================
+\begin{document}
+%============================================================
+
+\resumeheader{Bhargav Deshpande}
+  {Pune, Maharashtra, India}
+  {\href{mailto:bhardesh2005@gmail.com}{bhardesh2005@gmail.com}}
+  {+91\,94030\,18661}
+
+\vspace{2pt}
+\begin{center}
+  \small
+  \href{https://penzulo.dev}{penzulo.dev}
+  \quad\textbar\quad
+  \href{https://www.linkedin.com/in/bhargav-deshpande}{linkedin.com/in/bhargav-deshpande}
+  \quad\textbar\quad
+  \href{https://github.com/penzulo}{github.com/penzulo}
+\end{center}
+
+%------------------------------------------------------------
+\section{Education}
+%------------------------------------------------------------
+
+\rolelite{MIT World Peace University — Pune, Maharashtra}{Aug 2023 – May 2026}{B.Sc.\ in Data Science \& Big Data Analytics \quad\textbar\quad GPA: 8.2\,/\,10}
+
+\vspace{3pt}
+\textit{Relevant Coursework:} Data Structures \& Algorithms, Database Management Systems, Distributed Computing, Object-Oriented Programming, Operating Systems, Probability \& Statistics, Machine Learning
+
+%------------------------------------------------------------
+\section{Experience}
+%------------------------------------------------------------
+
+\roleentry{Servzo (VendorGrid B2B Procurement Platform)}{Co-Founder \& Full-Stack Engineer}{Jan 2025 – Present}{Pune, Maharashtra}
+
+\vspace{4pt}
+\begin{itemize}
+  \item Improved backend throughput by \textbf{28\%} (183\,→\,235\,req/s) by profiling and eliminating worker-process context-switching overhead — tuning a Gunicorn + asyncpg stack to a single-worker async model verified with \texttt{wrk} load testing at 10–100 concurrent connections, sustaining \textbf{sub-100\,ms median latency} on a 1\,vCPU / 4\,GB VPS.
+  \item Engineered a \textbf{high-concurrency monorepo backend} with FastAPI, asyncpg, and SQLAlchemy\,2.0 (async), applying object-oriented design patterns and non-blocking event loops to support $N$ concurrent bidding sessions with no thread-safety issues.
+  \item Replaced WebSocket broadcast system with a \textbf{server-sent events (SSE)} fan-out architecture using per-client \texttt{asyncio.Queue}, eliminating full-duplex overhead and reducing connection-state complexity by $\sim$40\%.
+  \item Hardened authentication by migrating JWT tokens from localStorage to \textbf{HTTP-only cookies}, eliminating XSS-based token-theft attack surface; refactored Zustand client store to hold ephemeral UI state only.
+  \item Deployed via \textbf{\texttt{rsync}/SSH} with zero Git credentials on the production server — deliberate opsec decision enabling atomic directory swaps and clean rollback.
+  \item Containerised with \textbf{Docker Compose} (Bun + \texttt{uv} Python services) and \texttt{develop.watch} hot-reload, cutting local onboarding to under 5\,min.
+\end{itemize}
+
+\vspace{6pt}
+
+\roleentry{AWS Cloud Club — MIT-WPU}{Software Developer}{Sep 2024 – Present}{Pune, Maharashtra}
+
+\vspace{4pt}
+\begin{itemize}
+  \item Designed and implemented a \textbf{genetic algorithm} timetable scheduler in Python, optimising a multi-constraint fitness function from 47\% → \textbf{98\% fitness score} across 2{,}000 evolutionary iterations, reducing manual scheduling effort by an estimated 6\,h/week.
+  \item Authored a \textbf{CLI automation toolkit} leveraging Python \texttt{asyncio} for concurrent task orchestration, cutting peer setup time by \textbf{60\%} ($\sim$45\,min → $\sim$18\,min) across 30+ club members.
+  \item Presented distributed systems and cloud-architecture concepts at two internal workshops; produced written technical documentation adopted as onboarding material.
+\end{itemize}
+
+%------------------------------------------------------------
+\section{Projects}
+%------------------------------------------------------------
+
+\projectentry{VendorGrid — B2B Procurement Marketplace}{https://vendorgrid.in}{Jan 2025 – Present}
+
+\vspace{4pt}
+\begin{itemize}
+  \item Built a production-deployed \textbf{full-stack SaaS platform} (FastAPI, React, PostgreSQL) for MSME/SME clients; features authentication, real-time bidding, vendor onboarding, and admin dashboards.
+  \item Designed a \textbf{modular MVC architecture} with clear separation of data-access, business-logic, and presentation layers; enforced type safety end-to-end with Pydantic\,v2 and TypeScript.
+  \item Delivered \textbf{optimistic UI updates} with TanStack Query to mask network latency, improving perceived responsiveness without sacrificing data consistency.
+  \item Configured Nginx reverse proxy, Let's Encrypt TLS termination, and DNS routing for \textbf{zero-downtime production deployment} on DigitalOcean (Mumbai region).
+\end{itemize}
+
+\vspace{6pt}
+
+\projectnurl{Watchtower — Real-Time Observability Dashboard}{2025 – Present}
+
+\vspace{4pt}
+\begin{itemize}
+  \item Architected a \textbf{distributed observability system} in a Bun monorepo (Elysia + TanStack Start) with a hot path (\textbf{Redis Pub/Sub → SSE → React}) targeting $<$50\,ms end-to-end metric delivery latency.
+  \item Designed a \textbf{cold path} using BullMQ job queues and ClickHouse columnar storage for high-throughput metric aggregation, enabling analytical queries over millions of time-series events.
+  \item Implemented \textbf{end-to-end type inference} across the monorepo workspace boundary using Elysia Eden Treaty, eliminating an entire category of runtime API contract errors at compile time.
+  \item Applied \textbf{ADR-driven architecture decisions} (e.g., migrated frontend from Angular to React + TanStack Query) with documented trade-off analysis of bundle size, DX, and ecosystem maturity.
+\end{itemize}
+
+\vspace{6pt}
+
+\projectnurl{MarketMiner — Async Financial Data Engine}{2024}
+
+\vspace{4pt}
+\begin{itemize}
+  \item Achieved \textbf{10$\times$ ingestion throughput} over synchronous baselines by aggregating multi-asset OHLCV data via Yahoo Finance API using HTTPX + \texttt{asyncio} concurrent I/O, enabling real-time pipeline refresh.
+  \item Persisted $\sim$100{,}000 data-points into PostgreSQL via SQLAlchemy\,2.0, reducing bulk-insert latency by \textbf{35\%} through batched writes and connection-pool tuning; implemented indexed time-series queries for sub-10\,ms read performance.
+  \item Exposed a typed REST API via FastAPI with automatic OpenAPI schema generation, enabling rapid integration testing and future consumer onboarding.
+\end{itemize}
+
+%------------------------------------------------------------
+\section{Technical Skills}
+%------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{@{} l X @{}}
+  \textbf{Languages}           & Python (Advanced), TypeScript, C, SQL \\[2pt]
+  \textbf{Backend \& Systems}  & FastAPI, asyncio, asyncpg, SQLAlchemy\,2.0, BullMQ, Elysia (Bun), Redis Pub/Sub, REST, SSE, WebSockets \\[2pt]
+  \textbf{Frontend}            & React, TanStack (Query / Router / Start), Zustand, Pydantic\,v2, OpenAPI / orval \\[2pt]
+  \textbf{Databases}           & PostgreSQL, ClickHouse, Redis \\[2pt]
+  \textbf{Infrastructure}      & Docker Compose, Nginx, Let's Encrypt, DigitalOcean, AWS (EC2, S3), Git, rsync/SSH \\[2pt]
+  \textbf{CS Fundamentals}     & Data Structures \& Algorithms, Object-Oriented Design, Distributed Systems, System Design, Time/Space Complexity Analysis \\[2pt]
+  \textbf{Tooling}             & \texttt{wrk} / load testing, Alembic (migrations), \texttt{uv} (Python packaging), Bun \\
+\end{tabularx}
+
+%------------------------------------------------------------
+\section{Leadership \& Activities}
+%------------------------------------------------------------
+
+\begin{itemize}
+  \item \textbf{Eureka! Junior 2021–22 Semi-finalist} — competed in a national-level science \& innovation competition; progressed to semi-final stage from a pool of thousands of applicants.
+  \item \textbf{State-level Gymnast} — competitive athlete; applies structured training methodology and discipline to engineering problem-solving.
+  \item \textbf{Technical Workshop Facilitator} — led sessions on distributed systems and cloud architecture for 30+ peers at AWS Cloud Club MIT-WPU.
+\end{itemize}
+
+%============================================================
+\end{document}
+%============================================================
