@@ -175,10 +175,24 @@
 			<section aria-labelledby="writing-heading">
 				<h2 id="writing-heading">Writing</h2>
 				<p>
-					Blog coming soon. I take notes while I build &mdash; on architecture decisions,
-					things that surprised me, and things I had to understand properly before I could move on.
-					They'll live here.
+					I take notes while I build &mdash; on architecture decisions, things that
+					surprised me, and things I had to understand properly before I could move on.
 				</p>
+
+				<article class="entry">
+					<div class="entry-meta">
+						<span class="entry-year">2025</span>
+						<span class="entry-tag">Postmortem</span>
+					</div>
+					<h3><a href="/blog/watchtower-throughput.html">Moving to homelab infra made things 4x slower, and I blamed the wrong thing</a></h3>
+					<p>
+						I built Watchtower, a self hosted log ingestion pipeline. Splitting the
+						infra across two machines made throughput four times worse, and I spent
+						way too long blaming the hardware before tracing it down to a single
+						<code>await</code>
+						keeping every request blocked on a network round trip.
+					</p>
+				</article>
 			</section>
 		</main>
 

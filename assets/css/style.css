@@ -88,6 +88,21 @@ p:last-child {
   margin-bottom: 0;
 }
 
+ul, ol {
+  margin-bottom: 0.85rem;
+  padding-left: 1.4em;
+  max-width: var(--measure);
+}
+
+li {
+  margin-bottom: 0.45rem;
+  line-height: 1.7;
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
 code {
   font-family: var(--font-mono);
   font-size: 0.88em;
@@ -95,6 +110,29 @@ code {
   color: var(--accent);
   padding: 0.1em 0.35em;
   border-radius: 3px;
+}
+
+pre {
+  font-family: var(--font-mono);
+  font-size: 0.84em;
+  background: #f0ede8;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  padding: 1.1em 1.3em;
+  overflow-x: auto;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  tab-size: 2;
+  white-space: pre;
+}
+
+pre > code {
+  background: none;
+  color: var(--text);
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
 }
 
 strong {
@@ -184,6 +222,17 @@ article.entry {
 }
 
 article.entry:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   BLOG ARTICLE PROSE
+   ============================================================ */
+article.prose > section {
+  margin-bottom: calc(var(--gap) * 1.4);
+}
+
+article.prose > section:last-child {
   margin-bottom: 0;
 }
 
