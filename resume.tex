@@ -80,7 +80,8 @@
 \newcommand{\projectentry}[3]{%
   \noindent
   \begin{tabularx}{\linewidth}{@{}X r@{}}
-    \textbf{#1} \textbar{} \href{#2}{\small\texttt{#2}} & \textit{\small #3}
+    \textbf{#1} & \textit{\small #3} \\
+    \multicolumn{2}{@{}l@{}}{\small\href{#2}{\texttt{#2}}}
   \end{tabularx}%
 }
 
@@ -154,14 +155,13 @@
 
 \vspace{4pt}
 
-\projectnurl{Watchtower — Real-Time Observability Dashboard}{2025 – Present}
+\projectentry{Watchtower — Real-Time Observability Dashboard}{https://github.com/penzulo/watchtower}{2025 – Present}
 
 \vspace{4pt}
 \begin{itemize}
-  \item Architected a \textbf{distributed observability system} in a Bun monorepo (Elysia + TanStack Start) with a hot path (\textbf{Redis Pub/Sub → SSE → React}) targeting $<$50\,ms end-to-end metric delivery latency.
-  \item Designed a \textbf{cold path} using BullMQ job queues and ClickHouse columnar storage for high-throughput metric aggregation, enabling analytical queries over millions of time-series events.
-  \item Implemented \textbf{end-to-end type inference} across the monorepo workspace boundary using Elysia Eden Treaty, eliminating an entire category of runtime API contract errors at compile time.
-  \item Applied \textbf{ADR-driven architecture decisions} (e.g., migrated frontend from Angular to React + TanStack Query) with documented trade-off analysis of bundle size, DX, and ecosystem maturity.
+  \item Built a \textbf{self-hosted log ingestion pipeline} (Elysia on Bun, Redis, ClickHouse) with a Redis\,→\,SSE\,→\,React hot path; removed a blocking \texttt{await} from the ingest handler and raised throughput from $<$500\,req/s to a \textbf{sustained 7,251\,req/s} (peak 8,595\,req/s) at \textbf{0\% error rate}, p50=42\,ms / p99=76\,ms, verified at 512 concurrent connections.
+  \item Implemented \textbf{end-to-end type safety} across the monorepo using Elysia Eden Treaty, eliminating a class of runtime API contract errors at compile time.
+  \item Authored a \href{https://penzulo.dev/blog/watchtower-throughput.html}{postmortem blog post} on diagnosing the 4$\times$ throughput regression — a debugging write-up covering the fix and the trade-offs made.
 \end{itemize}
 
 \vspace{6pt}

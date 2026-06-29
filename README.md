@@ -14,16 +14,20 @@ This website is built with a focus on simplicity, performance, and accessibility
 
 ```text
 .
-├── CNAME                   # Custom domain configuration for GitHub Pages
-├── index.html              # The main document
-├── README.md               # This file
-└── assets/
-    ├── css/
-    │   └── style.css       # Main stylesheet
-    └── images/
-        ├── favicon.svg     # Scalable vector favicon
-        ├── og.png          # OpenGraph image for link previews
-        └── og.svg          # Vector source/alternative for the OG image
+├── assets
+│   ├── css
+│   │   └── style.css
+│   └── images
+│       ├── apple-touch-icon.png
+│       ├── favicon.svg
+│       ├── og.png
+│       └── og.svg
+├── blog
+│   └── watchtower-throughput.html
+├── CNAME
+├── index.html
+├── README.md
+└── resume.tex
 ```
 
 ## Hosting
@@ -40,9 +44,12 @@ python3 -m http.server
 
 # Or using Node.js (if `serve` is installed)
 npx serve .
+
+# Or if Bun is installed
+bun index.html blogs/watchtower-throughput.html
 ```
 
-Then visit `http://localhost:8000` (or the port specified by your server) in your browser.
+Then visit the link shown in the standard output.
 
 ## License
 
