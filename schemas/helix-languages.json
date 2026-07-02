@@ -144,6 +144,13 @@
           "items": { "type": "string" },
           "description": "Marker files used for LSP working-directory root selection."
         },
+        "auto-pairs": {
+          "description": "Enable auto-pairs for the language or configure the character pairs.",
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "object", "additionalProperties": { "type": "string" } }
+          ]
+        },
         "auto-format": { "type": "boolean" },
         "diagnostic-severity": {
           "type": "string",
