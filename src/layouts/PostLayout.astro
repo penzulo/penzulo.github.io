@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import { entryDescription } from '../lib/utils';
+
+type Props = {
+	entry: CollectionEntry<'blog'> | CollectionEntry<'til'>;
+};
+
+const { entry } = Astro.props;
+const isBlog = entry.collection === 'blog';
+
+const { title } = entry.data;
+const description = entryDescription(entry);
+const pubDate = entry.data.pubDate ?? new Date(0);
+const dateStr = pubDate.toLocaleDateString('en-us', {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+});
+
+const kind = isBlog ? 'Blog' : 'Today I Learned';
+const listHref = isBlog ? '/blog/' : '/til/';
+const tagline = `${kind} · ${dateStr}`;
+const headTitle = `${title} — Bhargav Deshpande`;
+
+const blogData = entry.data as { heroImage?: import('astro').ImageMetadata };
+const tilData = entry.data as { image?: string };
+---
+
+<BaseLayout
+	title={title}
+	headTitle={headTitle}
+	description={description}
+	tagline={tagline}
+	type="article"
+	navLinks={[
+		{ href: '/', label: 'Home' },
+		{ href: listHref, label: kind },
+	]}
+>
+	<article class="prose">
+		{isBlog && blogData.heroImage && (
+			<Image src={blogData.heroImage} alt="" width={1020} height={510} class="hero-image" />
+		)}
+		{!isBlog && tilData.image && <img src={tilData.image} alt="" class="hero-image" />}
+		<slot />
+	</article>
+</BaseLayout>

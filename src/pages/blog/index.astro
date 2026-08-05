@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BaseLayout
+	title="Blog"
+	headTitle="Blog — Bhargav Deshpande"
+	description="Long-form posts on architecture, backend engineering, and things I had to understand properly."
+	navLinks={[{ href: '/', label: 'Home' }]}
+>
+	<p>
+		Long-form notes on architecture decisions, things that surprised me, and things I had to
+		understand properly before I could move on.
+	</p>
+
+	{posts.map((post) => (
+		<article class="entry">
+			<div class="entry-meta">
+				<span class="entry-year">{post.data.pubDate.getFullYear()}</span>
+				{post.data.tags[0] && <span class="entry-tag">{post.data.tags[0]}</span>}
+			</div>
+			<h3><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
+			<p>{post.data.description}</p>
+		</article>
+	))}
+</BaseLayout>
