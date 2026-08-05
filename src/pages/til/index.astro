@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { entryDescription } from '../../lib/utils';
+
+const posts = (await getCollection('til'))
+	.filter((post) => post.data.published)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout
+	title="Today I Learned"
+	headTitle="Today I Learned — Bhargav Deshpande"
+	description="Small, focused notes on things I pick up while building."
+	navLinks={[{ href: '/', label: 'Home' }]}
+>
+	<p>
+		Small, focused notes on things I pick up while building &mdash; too short for a full blog post.
+	</p>
+
+	{posts.map((post) => (
+		<article class="entry">
+			<div class="entry-meta">
+				<span class="entry-year">{post.data.pubDate.getFullYear()}</span>
+				{post.data.tags[0] && <span class="entry-tag">{post.data.tags[0]}</span>}
+			</div>
+			<h3><a href={`/til/${post.id}/`}>{post.data.title}</a></h3>
+			<p>{entryDescription(post)}</p>
+		</article>
+	))}
+</BaseLayout>

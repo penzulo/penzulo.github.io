@@ -1,0 +1,26 @@
+---
+interface NavLink {
+	href: string;
+	label: string;
+}
+
+interface Props {
+	title: string;
+	tagline?: string;
+	navLinks?: NavLink[];
+}
+
+const { title, tagline, navLinks = [] } = Astro.props;
+---
+
+<header>
+	<h1>{title}</h1>
+	{tagline && <p class="tagline">{tagline}</p>}
+	{navLinks.length > 0 && (
+		<nav aria-label="Site navigation">
+			{navLinks.map((link) => (
+				<a href={link.href}>{link.label}</a>
+			))}
+		</nav>
+	)}
+</header>
