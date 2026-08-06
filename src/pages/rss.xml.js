@@ -1,11 +1,13 @@
-import { getCollection } from 'astro:content';
-import rss from '@astrojs/rss';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-import { entryDescription } from '../lib/utils';
+import { getCollection } from "astro:content";
+import rss from "@astrojs/rss";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { entryDescription } from "../lib/utils";
 
 export async function GET(context) {
-	const blog = await getCollection('blog');
-	const til = (await getCollection('til')).filter((post) => post.data.published);
+	const blog = await getCollection("blog");
+	const til = (await getCollection("til")).filter(
+		(post) => post.data.published,
+	);
 
 	const items = [
 		...blog.map((post) => ({

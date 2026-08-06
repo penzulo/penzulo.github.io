@@ -1,9 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { entryDescription } from '../../lib/utils';
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { entryDescription } from "../../lib/utils";
 
-const posts = (await getCollection('til'))
+const posts = (await getCollection("til"))
 	.filter((post) => post.data.published)
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
@@ -15,7 +15,8 @@ const posts = (await getCollection('til'))
 	navLinks={[{ href: '/', label: 'Home' }]}
 >
 	<p>
-		Small, focused notes on things I pick up while building &mdash; too short for a full blog post.
+		Small, focused notes on things I pick up while building &mdash; too short
+		for a full blog post.
 	</p>
 
 	{posts.map((post) => (

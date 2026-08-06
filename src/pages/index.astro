@@ -1,24 +1,27 @@
 ---
-import { getCollection } from 'astro:content';
-import FormattedDate from '../components/FormattedDate.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { entryDescription } from '../lib/utils';
+import { getCollection } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { entryDescription } from "../lib/utils";
 
-const blogPosts = (await getCollection('blog')).sort(
+const blogPosts = (await getCollection("blog")).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-const tilPosts = (await getCollection('til'))
+const tilPosts = (await getCollection("til"))
 	.filter((post) => post.data.published)
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const navLinks = [
-	{ href: '/blog/', label: 'Blog' },
-	{ href: '/til/', label: 'TIL' },
-	{ href: 'https://github.com/penzulo/penzulo.github.io/blob/main/resume.tex', label: 'Resume' },
-	{ href: 'https://github.com/penzulo', label: 'GitHub' },
-	{ href: 'https://www.linkedin.com/in/bhargav-deshpande/', label: 'LinkedIn' },
-	{ href: 'mailto:bhardesh2005@gmail.com', label: 'Email' },
+	{ href: "/blog/", label: "Blog" },
+	{ href: "/til/", label: "TIL" },
+	{
+		href: "https://github.com/penzulo/penzulo.github.io/blob/main/resume.tex",
+		label: "Resume",
+	},
+	{ href: "https://github.com/penzulo", label: "GitHub" },
+	{ href: "https://www.linkedin.com/in/bhargav-deshpande/", label: "LinkedIn" },
+	{ href: "mailto:bhardesh2005@gmail.com", label: "Email" },
 ];
 ---
 
@@ -27,19 +30,24 @@ const navLinks = [
 	description={SITE_DESCRIPTION}
 	tagline="I build backend-heavy full-stack systems."
 	navLinks={navLinks}
+	portrait
 >
 	<section aria-labelledby="about-heading">
 		<h2 id="about-heading">About</h2>
 		<p>
-			B.Sc. Data Science student at <a href="https://mitwpu.edu.in/" rel="noopener noreferrer">MIT World Peace University</a>, Pune.
-			I care about systems that are correct, observable, and fast.
-			I spend most of my time on backend architecture, API design, and the plumbing
-			that makes full-stack applications not fall apart under load.
+			B.Sc. Data Science student at{" "}
+			<a href="https://mitwpu.edu.in/" rel="noopener noreferrer"
+				>MIT World Peace University</a
+			>, Pune. I care about systems that are correct, observable, and fast. I
+			spend most of my time on backend architecture, API design, and the
+			plumbing that makes full-stack applications not fall apart under load.
 		</p>
 		<p>
-			Outside of code I roam around on my motorcycle chasing sunsets and fast winds.
-			I also like ricing my Arch Linux environment.
-			These are my <a href="https://github.com/penzulo/dotfiles" rel="noopener noreferrer">dotfiles</a>.
+			Outside of code I roam around on my motorcycle chasing sunsets and fast
+			winds. I also like ricing my Arch Linux environment. These are my{" "}
+			<a href="https://github.com/penzulo/dotfiles" rel="noopener noreferrer"
+				>dotfiles</a
+			>.
 		</p>
 	</section>
 
@@ -51,7 +59,11 @@ const navLinks = [
 				<span class="entry-year">2023 &ndash; present</span>
 				<span class="entry-tag">Undergraduate</span>
 			</div>
-			<h3><a href="https://mitwpu.edu.in/" rel="noopener noreferrer">MIT World Peace University</a>, Pune</h3>
+			<h3>
+				<a href="https://mitwpu.edu.in/" rel="noopener noreferrer"
+					>MIT World Peace University</a
+				>, Pune
+			</h3>
 			<p>Bachelor of Science in Data Science.</p>
 		</article>
 	</section>
@@ -64,18 +76,25 @@ const navLinks = [
 				<span class="entry-year">2025 &ndash; present</span>
 				<span class="entry-tag">Co-founder</span>
 			</div>
-			<h3><a href="https://vendorgrid.in" rel="noopener noreferrer">Servzo (VendorGrid)</a></h3>
+			<h3>
+				<a href="https://vendorgrid.in" rel="noopener noreferrer"
+					>Servzo (VendorGrid)</a
+				>
+			</h3>
 			<p>
-				B2B Procurement platform digitising vendor management for small businesses.
-				Live at <a href="https://vendorgrid.in" rel="noopener noreferrer">vendorgrid.in</a>.
-				Engineered a high-concurrency monorepo backend with FastAPI, asyncpg, and SQLAlchemy 2.0.
-				Features SSE-based real-time vendor notifications, HTTP-only cookie auth, structured JSON logging,
-				and a Docker Compose deployment behind Nginx on a DigitalOcean VPS.
+				B2B Procurement platform digitising vendor management for small
+				businesses. Live at{" "}
+				<a href="https://vendorgrid.in" rel="noopener noreferrer"
+					>vendorgrid.in</a
+				>. Engineered a high-concurrency monorepo backend with FastAPI, asyncpg,
+				and SQLAlchemy 2.0. Features SSE-based real-time vendor notifications,
+				HTTP-only cookie auth, structured JSON logging, and a Docker Compose
+				deployment behind Nginx on a DigitalOcean VPS.
 			</p>
 			<p class="footer-note">
-				<strong>P.S</strong>: The JSON stdout logs are passed through
-				<a href="https://jqlang.org/" rel="noopener noreferrer">jq</a>.
-				It's actually a very good way to differ JSON logs in stdout
+				<strong>P.S</strong>: The JSON stdout logs are passed through{" "}
+				<a href="https://jqlang.org/" rel="noopener noreferrer">jq</a>. It's
+				actually a very good way to differ JSON logs in stdout
 			</p>
 		</article>
 
@@ -86,7 +105,10 @@ const navLinks = [
 			</div>
 			<h3>AWS Cloud Club &mdash; MIT-WPU</h3>
 			<p>
-				Designed and implemented a genetic algorithm timetable scheduler in Python, optimising a multi-constraint fitness function across 2,000 evolutionary iterations. Authored a CLI automation toolkit leveraging Python <code>asyncio</code>
+				Designed and implemented a genetic algorithm timetable scheduler in
+				Python, optimising a multi-constraint fitness function across 2,000
+				evolutionary iterations. Authored a CLI automation toolkit leveraging
+				Python <code>asyncio</code>
 				for concurrent task orchestration.
 			</p>
 		</article>
@@ -100,13 +122,20 @@ const navLinks = [
 				<span class="entry-year">2025</span>
 				<span class="entry-tag">Observability</span>
 			</div>
-			<h3>Watchtower</h3>
+			<h3>
+				<a
+					href="https://github.com/penzulo/watchtower"
+					rel="noopener noreferrer"
+					>Watchtower</a
+				>
+			</h3>
 			<p>
 				Real-time observability dashboard built on a hot/cold path architecture.
-				Hot path: Redis Pub/Sub fans out events to SSE subscribers via Elysia (Bun).
-				Cold path: BullMQ workers drain into ClickHouse for long-term retention and
-				analytical queries. Frontend in TanStack Start (React) with TanStack Query,
-				Eden Treaty for end-to-end type inference across the monorepo.
+				Hot path: Redis Pub/Sub fans out events to SSE subscribers via Elysia
+				(Bun). Cold path: BullMQ workers drain into ClickHouse for long-term
+				retention and analytical queries. Frontend in TanStack Start (React)
+				with TanStack Query, Eden Treaty for end-to-end type inference across
+				the monorepo.
 			</p>
 		</article>
 
@@ -115,11 +144,16 @@ const navLinks = [
 				<span class="entry-year">2024</span>
 				<span class="entry-tag">Data Engineering</span>
 			</div>
-			<h3><a href="https://github.com/penzulo/vriddhi" rel="noopener noreferrer">Vriddhi</a></h3>
+			<h3>
+				<a href="https://github.com/penzulo/vriddhi" rel="noopener noreferrer"
+					>Vriddhi</a
+				>
+			</h3>
 			<p>
-				Self-hosted NSE end-of-day data pipeline, archive, and screener. Downloads and structures
-				twenty years of market data into a queryable PostgreSQL archive. Exposes a FastAPI REST API
-				consumed by a React dashboard. Built with an async-first architecture using Python, asyncpg,
+				Self-hosted NSE end-of-day data pipeline, archive, and screener.
+				Downloads and structures twenty years of market data into a queryable
+				PostgreSQL archive. Exposes a FastAPI REST API consumed by a React
+				dashboard. Built with an async-first architecture using Python, asyncpg,
 				and a Redis-backed task queue.
 			</p>
 		</article>
@@ -129,12 +163,19 @@ const navLinks = [
 				<span class="entry-year">2024</span>
 				<span class="entry-tag">Finance</span>
 			</div>
-			<h3><a href="https://github.com/penzulo/MarketMiner" rel="noopener noreferrer">MarketMiner</a></h3>
+			<h3>
+				<a
+					href="https://github.com/penzulo/MarketMiner"
+					rel="noopener noreferrer"
+					>MarketMiner</a
+				>
+			</h3>
 			<p>
-				Python library for financial forecasting and portfolio optimisation using
-				NSE end-of-day index data. Combines statistical analysis and machine learning
-				with a Progressive Web App dashboard. Rebuilt from a family member's original
-				pipeline with strict architectural patterns: one-way dependency flow,
+				Python library for financial forecasting and portfolio optimisation
+				using NSE end-of-day index data. Combines statistical analysis and
+				machine learning with a Progressive Web App dashboard. Rebuilt from a
+				family member's original pipeline with strict architectural patterns:
+				one-way dependency flow,
 				<code>StrEnum</code>
 				throughout, injectable transports for testing.
 			</p>
@@ -149,7 +190,8 @@ const navLinks = [
 		</p>
 		<p>
 			<strong>Backend:</strong>
-			FastAPI, asyncio, asyncpg, SQLAlchemy 2.0, BullMQ, Elysia (Bun), Redis, ClickHouse
+			FastAPI, asyncio, asyncpg, SQLAlchemy 2.0, BullMQ, Elysia (Bun), Redis,
+			ClickHouse
 		</p>
 		<p>
 			<strong>Frontend:</strong>
@@ -157,7 +199,8 @@ const navLinks = [
 		</p>
 		<p>
 			<strong>Infra:</strong>
-			Docker Compose, Nginx, Let's Encrypt, DigitalOcean, AWS, Git, Arch Linux / Sway
+			Docker Compose, Nginx, Let's Encrypt, DigitalOcean, AWS, Git, Arch Linux /
+			Sway
 		</p>
 		<p>
 			<strong>Currently learning:</strong>
@@ -169,7 +212,8 @@ const navLinks = [
 		<h2 id="writing-heading">Writing</h2>
 		<p>
 			I take notes while I build &mdash; on architecture decisions, things that
-			surprised me, and things I had to understand properly before I could move on.
+			surprised me, and things I had to understand properly before I could move
+			on.
 		</p>
 
 		{blogPosts.map((post) => (
@@ -191,7 +235,8 @@ const navLinks = [
 	<section aria-labelledby="til-heading">
 		<h2 id="til-heading">Today I Learned</h2>
 		<p>
-			Small, focused notes on things I pick up while building &mdash; too short for a full post.
+			Small, focused notes on things I pick up while building &mdash; too short
+			for a full post.
 		</p>
 
 		{tilPosts.map((post) => (

@@ -1,7 +1,7 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 
 interface NavLink {
 	href: string;
@@ -14,8 +14,9 @@ interface Props {
 	tagline?: string;
 	navLinks?: NavLink[];
 	headTitle?: string;
-	type?: 'website' | 'article';
+	type?: "website" | "article";
 	image?: string;
+	portrait?: boolean;
 }
 
 const {
@@ -24,18 +25,29 @@ const {
 	tagline,
 	navLinks = [],
 	headTitle = title,
-	type = 'website',
+	type = "website",
 	image,
+	portrait = false,
 } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={headTitle} description={description} type={type} image={image} />
+		<BaseHead
+			title={headTitle}
+			description={description}
+			type={type}
+			image={image}
+		/>
 	</head>
 	<body>
-		<Header title={title} tagline={tagline} navLinks={navLinks} />
+		<Header
+			title={title}
+			tagline={tagline}
+			navLinks={navLinks}
+			portrait={portrait}
+		/>
 		<main>
 			<slot />
 		</main>

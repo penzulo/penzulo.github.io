@@ -1,8 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const posts = (await getCollection('blog')).sort(
+const posts = (await getCollection("blog")).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
@@ -14,8 +14,8 @@ const posts = (await getCollection('blog')).sort(
 	navLinks={[{ href: '/', label: 'Home' }]}
 >
 	<p>
-		Long-form notes on architecture decisions, things that surprised me, and things I had to
-		understand properly before I could move on.
+		Long-form notes on architecture decisions, things that surprised me, and
+		things I had to understand properly before I could move on.
 	</p>
 
 	{posts.map((post) => (

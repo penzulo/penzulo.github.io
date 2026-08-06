@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 interface NavLink {
 	href: string;
 	label: string;
@@ -8,19 +10,68 @@ interface Props {
 	title: string;
 	tagline?: string;
 	navLinks?: NavLink[];
+	portrait?: boolean;
 }
 
-const { title, tagline, navLinks = [] } = Astro.props;
+// Picks up src/assets/portrait.<ext> if present; the header renders without a
+// photo until the file is dropped in. Using a glob keeps the build green in
+// both cases.
+const portraitModules = import.meta.glob("../assets/portrait.*", {
+	eager: true,
+	import: "default",
+}) as Record<string, import("astro").ImageMetadata>;
+const portraitSrc = portraitModules[Object.keys(portraitModules)[0] ?? ""];
+
+const { title, tagline, navLinks = [], portrait = false } = Astro.props;
 ---
 
 <header>
-	<h1>{title}</h1>
-	{tagline && <p class="tagline">{tagline}</p>}
-	{navLinks.length > 0 && (
-		<nav aria-label="Site navigation">
-			{navLinks.map((link) => (
-				<a href={link.href}>{link.label}</a>
-			))}
-		</nav>
-	)}
+	<div class="head-row">
+		{portrait && portraitSrc && (
+			<Image
+				src={portraitSrc}
+				alt="Bhargav Deshpande"
+				class="portrait"
+				width={480}
+				height={480}
+			/>
+		)}
+		<div class="head-text">
+			<h1>{title}</h1>
+			{tagline && <p class="tagline">{tagline}</p>}
+			{navLinks.length > 0 && (
+				<nav aria-label="Site navigation">
+					{navLinks.map((link) => (
+						<a href={link.href}>{link.label}</a>
+					))}
+					<button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false">
+						Theme
+					</button>
+				</nav>
+			)}
+		</div>
+	</div>
 </header>
+
+<script is:inline>
+(() => {
+	var btn = document.getElementById("theme-toggle");
+	if (!btn) return;
+	var root = document.documentElement;
+	var sync = () => {
+		var dark = root.getAttribute("data-theme") === "dark";
+		btn.setAttribute("aria-pressed", String(dark));
+		btn.textContent = dark ? "Light" : "Dark";
+	};
+	btn.addEventListener("click", () => {
+		var dark = root.getAttribute("data-theme") === "dark";
+		var next = dark ? "light" : "dark";
+		root.setAttribute("data-theme", next);
+		try {
+			localStorage.setItem("theme", next);
+		} catch (e) {}
+		sync();
+	});
+	sync();
+})();
+</script>

@@ -1,4 +1,4 @@
-const target = '/blog/watchtower-throughput/';
+const target = "/blog/watchtower-throughput/";
 
 const html = `<!doctype html>
 <html lang="en">
@@ -15,6 +15,6 @@ const html = `<!doctype html>
 
 export function GET() {
 	return new Response(html, {
-		headers: { 'content-type': 'text/html; charset=utf-8' },
+		headers: { "content-type": "text/html; charset=utf-8" },
 	});
 }
