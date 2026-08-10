@@ -26,7 +26,7 @@ const tagline = `${kind} · ${dateStr}`;
 const headTitle = `${title} — Bhargav Deshpande`;
 
 const blogData = entry.data as { heroImage?: import("astro").ImageMetadata };
-const tilData = entry.data as { image?: string };
+const tilData = entry.data as { image?: string; source?: string | null };
 ---
 
 <BaseLayout
@@ -46,5 +46,13 @@ const tilData = entry.data as { image?: string };
 		)}
 		{!isBlog && tilData.image && <img src={tilData.image} alt="" class="hero-image" />}
 		<slot />
+		{tilData.source && (
+			<p class="footer-note">
+				Source:{" "}
+				<a href={tilData.source} rel="noopener noreferrer">
+					{tilData.source}
+				</a>
+			</p>
+		)}
 	</article>
 </BaseLayout>
