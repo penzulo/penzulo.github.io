@@ -317,6 +317,30 @@ article.prose > section:last-child {
 	margin-bottom: 0;
 }
 
+article.prose table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 1rem;
+	max-width: var(--measure);
+}
+
+article.prose th,
+article.prose td {
+	border: 1px solid var(--border);
+	padding: 0.45em 0.7em;
+	text-align: left;
+	vertical-align: top;
+}
+
+article.prose th {
+	font-family: var(--font-mono);
+	font-size: 0.8rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--muted);
+	background: var(--surface);
+}
+
 .entry-meta {
 	display: flex;
 	align-items: center;
