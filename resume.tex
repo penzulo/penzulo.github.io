@@ -1,6 +1,6 @@
 %-------------------------
 % Harvard-Style Resume — Bhargav Deshpande
-% Two-page, XYZ formula, MAANG keyword-optimised
+% One-page, XYZ formula, MAANG keyword-optimised
 %-------------------------
 \documentclass[10pt, letterpaper]{article}
 
@@ -12,8 +12,8 @@
 ]{geometry}
 \usepackage{enumitem}
 \usepackage{hyperref}
-\usepackage{fontenc}
-\usepackage{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage{microtype}
 \usepackage{titlesec}
 \usepackage{parskip}
@@ -101,7 +101,7 @@
 
 \resumeheader{Bhargav Deshpande}
   {Pune, Maharashtra, India}
-  {\href{mailto:bhardesh2005@gmail.com}{bhardesh2005@gmail.com} \textbar{} +91 94030 18661}
+  {\href{mailto:bhardesh2005@gmail.com}{bhardesh2005@gmail.com} \textbar{} \href{tel:+919403018661}{+91 94030 18661}}
 
 \vspace{1pt}
 \begin{center}
@@ -117,7 +117,7 @@
 \section{Education}
 %------------------------------------------------------------
 
-\rolelite{MIT World Peace University — Pune, Maharashtra}{Aug 2023 – May 2026}{B.Sc.\ in Data Science \& Big Data Analytics \quad\textbar\quad GPA: 8.2\,/\,10}
+\rolelite{MIT World Peace University — Pune, Maharashtra}{Aug 2023 – May 2027}{B.Sc.\ in Data Science \& Big Data Analytics \quad\textbar\quad GPA: 8.2\,/\,10}
 
 \vspace{1pt}
 \textit{Relevant Coursework:} Data Structures \& Algorithms, Database Management Systems, Distributed Computing, Object-Oriented Programming, Operating Systems, Probability \& Statistics, Machine Learning
@@ -131,13 +131,13 @@
 \vspace{2pt}
 \begin{itemize}
   \item Improved backend throughput by \textbf{28\%} (183\,→\,235\,req/s) by profiling and eliminating worker-process context-switching overhead — tuning a Gunicorn + asyncpg stack to a single-worker async model verified with \texttt{wrk} load testing at 10–100 concurrent connections, sustaining \textbf{sub-100\,ms median latency} on a 1\,vCPU / 4\,GB VPS.
-  \item Engineered a \textbf{high-concurrency monorepo backend} with FastAPI, asyncpg, and SQLAlchemy\,2.0 (async), applying object-oriented design patterns and non-blocking event loops to support $N$ concurrent bidding sessions with no thread-safety issues.
-  \item Replaced WebSocket broadcast system with a \textbf{server-sent events (SSE)} fan-out architecture using per-client \texttt{asyncio.Queue}, eliminating full-duplex overhead and reducing connection-state complexity by $\sim$40\%.
+  \item Engineered a \textbf{high-concurrency monorepo backend} with FastAPI, asyncpg, and SQLAlchemy\,2.0 (async), applying object-oriented design patterns and non-blocking event loops to support concurrent bidding sessions with no thread-safety issues.
+  \item Replaced WebSocket broadcast system with a \textbf{server-sent events (SSE)} fan-out architecture backed by an async Redis queue, eliminating full-duplex overhead and reducing connection-state complexity by $\sim$40\%.
 \end{itemize}
 
 \vspace{3pt}
 
-\roleentry{AWS Cloud Club — MIT-WPU}{Software Developer}{Sep 2024 – Present}{Pune, Maharashtra}
+\roleentry{AWS Cloud Club — MIT-WPU}{Software Developer}{Sep 2024 – Jan 2025}{Pune, Maharashtra}
 
 \vspace{2pt}
 \begin{itemize}
@@ -151,7 +151,7 @@
 
 \vspace{2pt}
 
-\projectentry{Watchtower — Real-Time Observability Dashboard}{https://github.com/penzulo/watchtower}{2025 – Present}
+\projectentry{Watchtower — Real-Time Observability Dashboard}{https://github.com/penzulo/watchtower}{Summer 2026}
 
 \vspace{2pt}
 \begin{itemize}
@@ -162,7 +162,7 @@
 
 \vspace{3pt}
 
-\projectentry{Vriddhi — NSE End-of-Day Data Pipeline}{https://github.com/penzulo/vriddhi}{2024}
+\projectentry{Vriddhi — NSE End-of-Day Data Pipeline}{https://github.com/penzulo/vriddhi}{Summer 2026}
 
 \vspace{2pt}
 \begin{itemize}
