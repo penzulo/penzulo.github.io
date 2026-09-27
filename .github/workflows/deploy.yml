@@ -38,6 +38,14 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      - name: Compile resume PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+
+      - name: Copy resume PDF into site output
+        run: cp resume.pdf dist/resume.pdf
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
